@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREDICT</title>
+    <link rel="stylesheet" href="{% static 'app1/css/style_2.css' %}">
+</head>
+<body>
+     <div class="main">
+         <h1>Please enter the following values:</h1>
+         <form action="result" method="POST">
+             {% csrf_token %}
+             <div class="col-sm-1">
+                 <p> Avg.Area Income</p>
+                 <input type="text" name="n1">
+             </div>
+             <div class="col-sm-2">
+                 <p> Avg.Area House Age</p>
+                 <input type="text" name="n2">
+             </div>
+             <div class="col-sm-3">
+                 <p> Avg.Area Number of Rooms</p>
+                 <input type="text" name="n3">
+             </div>
+             <div class="col-sm-4">
+                 <p> Avg.Area Number of Bedrooms</p>
+                 <input type="text" name="n4">
+             </div>
+             <div class="col-sm-5">
+                 <p> Avg.Area Population</p>
+                 <input type="text" name="n5">
+             </div>
+             <div class="col-sm-6">
+                 <p> Location </p>
+                 <textarea name="n6" rows="3" cols ="25"></textarea>
+             </div>
+             <div class="row-1">
+                 <button>PREDICT</button>
+             </div>
+         </form>
+
+         <div class="row-2">
+             <h2>The Predicted price is : ${{result}}</h2>
+         </div>
+     </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+body
+{
+     background-color:black;
+
+}
+
+.col-sm-6
+{
+    background-color:bisque;
+}
+
+
+.col-sm-1
+{
+   background-color:LightPink;
+}
+.col-sm-2
+{
+   background-color:DarkSeaGreen;
+}
+.col-sm-3
+{
+   background-color:LightPink;
+}
+.col-sm-4
+{
+   background-color:Turquoise;
+}
+.col-sm-5
+{
+   background-color:RosyBrown;
+}
+
+
+           .main{
+           position: relative;
+            top:120px;
+            left:410px;
+            width:700px;
+            background-color:gainsboro;
+            align-items:center;
+            border-radius:5%;
+        }
+        div{
+            padding:15px;
+        }
+        button{
+            background-color:Black;
+            color:white;
+            cursor:pointer;
+            padding: 16px 32px;
+        }
+        h1{
+            font-size:40px;
+        }
+        h2{
+            font-size:30px;
+            color:DarkRed;
+        }
+        body{
+
+            background-size:cover;
+            background-repeat:no-repeat;
+        }
