@@ -1,5 +1,10 @@
 from django.shortcuts import render
 
+import numpy as np
+import joblib
+model = joblib.load(r"C:\PythonProject\HousePricePrediction\app1\models.sav")
+
+
 def home(request):
     return render(request,'app1/home.html')
 
@@ -9,10 +14,6 @@ def predict(request):
 def result(request):
 
     if request.method =='POST':
-        import numpy as np
-
-        import joblib
-        model = joblib.load(r"C:\PythonProject\HousePricePrediction\app1\models.sav")
 
         var1 = float(request.POST['n1'])
         var2 = float(request.POST['n2'])
