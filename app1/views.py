@@ -12,7 +12,8 @@ def result(request):
 
         import numpy as np
         import joblib
-        model = joblib.load(r"C:\PythonProject\HousePricePrediction\app1\models.z")
+
+        model = joblib.load("app1\models.sav")
 
         var1 = float(request.POST['n1'])
         var2 = float(request.POST['n2'])
