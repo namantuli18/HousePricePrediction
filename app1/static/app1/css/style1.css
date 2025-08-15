@@ -1,12 +1,17 @@
-/* ===== General Styles ===== */
-body {
+/* ===== General ===== */
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #4facfe, #6a11cb, #ff6a00, #fbc2eb);
     background-size: 400% 400%;
-    animation: gradientShift 12s ease infinite;
-    color: #fff9f9;
-    text-align: center;
+    animation: gradientShift 15s ease infinite;
+    color: #fff;
+    line-height: 1.6;
 }
 
 /* ===== Gradient Animation ===== */
@@ -16,115 +21,133 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-h1, h2, h3 {
-    margin: 0.5rem 0;
-    color: #fff;
-}
-
-p {
-    line-height: 1.6;
-    color: #fdfdfd;
-}
-
 /* ===== Header ===== */
 header {
-    background: rgba(255, 255, 255, 0.08);
-    padding: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 1.6rem;
+    white-space: nowrap;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 nav a {
-    margin: 0 1rem;
     color: #fff;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    font-size: 1rem;
+    transition: color 0.3s;
 }
 
 nav a:hover {
-    color: #ffe082;
+    color: #ffeb3b;
 }
 
-/* ===== Info & Feature Boxes ===== */
-.info-boxes, .features-boxes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem;
+/* ===== Sections ===== */
+section {
+    padding: 60px 20px;
 }
 
-.info-box, .feature-box {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-    padding: 1.5rem;
-    border-radius: 15px;
-    color: #fff;
+section h2 {
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.info-box h3, .feature-box h3 {
-    margin-bottom: 0.8rem;
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-.info-box p, .feature-box p {
-    font-size: 0.95rem;
-    opacity: 0.95;
-}
-
-/* Color Variations for Boxes */
-.info-box:nth-child(1) { background: linear-gradient(145deg, #ff758c, #ff7eb3); }
-.info-box:nth-child(2) { background: linear-gradient(145deg, #43cea2, #185a9d); }
-.info-box:nth-child(3) { background: linear-gradient(145deg, #ff9966, #ff5e62); }
-
-.feature-box:nth-child(1) { background: linear-gradient(145deg, #8e2de2, #4a00e0); }
-.feature-box:nth-child(2) { background: linear-gradient(145deg, #f7971e, #ffd200); }
-.feature-box:nth-child(3) { background: linear-gradient(145deg, #00c6ff, #0072ff); }
-.feature-box:nth-child(4) { background: linear-gradient(145deg, #ff6a00, #ee0979); }
-
-.info-box:hover, .feature-box:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-}
-
-/* ===== About Section ===== */
-.about-section {
-    padding: 3rem 1rem;
-    background: linear-gradient(135deg, #000428, #004e92);
-    color: #fff;
-}
-
-.about-section h2 {
+    margin-bottom: 40px;
     font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #ffde7d;
 }
 
-.about-content {
-    max-width: 900px;
-    margin: auto;
-    text-align: left;
-    line-height: 1.7;
-    font-size: 1.1rem;
+/* ===== Boxes ===== */
+.info-boxes, .about-boxes, .features-boxes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-box, .about-box, .feature-box {
+    flex: 1 1 250px;
+    max-width: 300px;
+    min-width: 200px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.info-box:hover, .about-box:hover, .feature-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
 }
 
 /* ===== Footer ===== */
 footer {
-    margin-top: 2rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.08);
+    text-align: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
     font-size: 0.9rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* ===== Animations ===== */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* ===== Responsive ===== */
+@media (max-width: 1200px) {
+    .info-box, .about-box, .feature-box { flex: 1 1 220px; }
+}
+
+@media (max-width: 1024px) {
+    header h1 { font-size: 1.5rem; }
+    nav a { font-size: 0.95rem; }
+}
+
+@media (max-width: 768px) {
+    header h1 { font-size: 1.4rem; width: 100%; text-align: center; margin-bottom: 10px; }
+    nav { justify-content: center; width: 100%; gap: 15px; }
+    nav a { font-size: 0.9rem; }
+    .info-box, .about-box, .feature-box { padding: 20px; flex: 1 1 45%; max-width: 45%; }
+    section { padding: 50px 15px; }
+}
+
+@media (max-width: 480px) {
+    /* remove all side space */
+    body { padding: 0; }
+    header { padding: 10px 0; }
+    header h1 { font-size: 1.3rem; }
+    nav { justify-content: center; gap: 8px; }
+    nav a { font-size: 0.85rem; }
+    section { padding: 40px 0; }
+    .info-boxes, .about-boxes, .features-boxes { gap: 10px; margin: 0; }
+    .info-box, .about-box, .feature-box {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    header h1 { font-size: 1.2rem; }
+    nav a { font-size: 0.8rem; }
+    .info-box, .about-box, .feature-box { padding: 12px; }
+    section h2 { font-size: 1.6rem; margin-bottom: 30px; }
 }

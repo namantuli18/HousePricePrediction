@@ -41,10 +41,10 @@ def predict(request):
             house_age = float(request.POST.get('HouseAge', 0))
             rooms = float(request.POST.get('Number_of_Rooms', 0))
             bedrooms = float(request.POST.get('Number_of_Bedrooms', 0))
-            population = float(request.POST.get('Population', 0))
+            population = float(request.POST.get('AreaPopulation', 0))
             posted_address = request.POST.get('Address', '')
 
-            input_values = [house_age, rooms, bedrooms, income,population]
+            input_values = [house_age, rooms, bedrooms, income, population]
 
     return render(request, 'app1/predict.html', {
         'form': form,

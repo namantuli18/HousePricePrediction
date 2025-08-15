@@ -5,10 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Predict House Price</title>
-<link rel="stylesheet" href="{% static 'app1/css/style3.css' %}">
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="{% static 'app1/css/style3.css' %}">
 </head>
-<body id="fullPage">
+<body id="fullPage" >
 
 <header>
     <h1>🏠 Predict House Price</h1>
@@ -27,7 +27,7 @@
 
         <div class="button-group">
             <button type="submit" class="btn-primary">Predict</button>
-            <button type="reset" class="btn-secondary" id="clearBtn">Clear</button>
+            <button type="button" class="btn-secondary" id="clearBtn">Clear</button>
         </div>
     </form>
 
@@ -35,7 +35,7 @@
     <div class="info" id="accuracyResult">📊 Model Accuracy: {{ accuracy_score|default:"-" }}%</div>
 
     <div id="chartContainer"
-         data-values='{{ input_values|default:"[0,0,0,0,0]"|safe }}'
+         data-values='{{ input_values|default:"[0,0,0,0,0]" }}'
          data-address='{{ posted_address|default:"" }}'>
         <div class="chart-container">
             <canvas id="valueChart"></canvas>

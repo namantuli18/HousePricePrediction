@@ -1,105 +1,146 @@
-/* General Page Styling */
-body {
+/* ===== General ===== */
+* {
+    box-sizing: border-box;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #4facfe, #00f2fe, #43e97b, #38f9d7, #fa709a, #fee140);
-    background-size: 500% 500%;
-    animation: gradientAnimation 15s ease infinite;
-    color: black;
-    text-align: center;
+    padding: 0;
 }
 
-/* Animated Gradient Background */
-@keyframes gradientAnimation {
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #4facfe, #6a11cb, #ff6a00, #fbc2eb);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: #fff;
+}
+
+/* ===== Gradient Animation ===== */
+@keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Header */
+/* ===== Header ===== */
 header {
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between; /* title left, nav right */
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: nowrap;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 2rem;
+    font-size: 1.6rem;
+    white-space: nowrap;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex-shrink: 0;
+    justify-content: flex-end;
 }
 
 nav a {
-    margin: 0 1rem;
-    color: white;
+    color: #fff;
     text-decoration: none;
     font-weight: 500;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: color 0.3s;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    color: #ffeb3b;
 }
 
-/* Steps Section */
-h2 {
-    margin-top: 1rem;
-    font-size: 1.8rem;
+/* ===== Sections ===== */
+section {
+    padding: 60px 20px;
 }
 
+section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+/* ===== Steps Boxes ===== */
 .steps-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap; /* wrap to next line on small screens */
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Step Box Base Style */
 .step-box {
-    padding: 1.5rem;
+    flex: 1 1 300px; /* grow/shrink, min-width */
+    background: rgba(255,255,255,0.1);
     border-radius: 15px;
-    color: white;
-    font-weight: 500;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-size: 200% 200%;
-    animation: gradientShift 5s ease infinite;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    min-width: 250px;
 }
-
-@keyframes gradientShift {
-    0% { background-position: left top; }
-    50% { background-position: right bottom; }
-    100% { background-position: left top; }
-}
-
-/* Different Gradient Colors per Box */
-.box1 { background: linear-gradient(135deg, #ff9966, #ff5e62); }
-.box2 { background: linear-gradient(135deg, #36d1dc, #5b86e5); }
-.box3 { background: linear-gradient(135deg, #ff6a00, #ee0979); }
-.box4 { background: linear-gradient(135deg, #11998e, #38ef7d); }
-.box5 { background: linear-gradient(135deg, #fc466b, #3f5efb); }
-.box6 { background: linear-gradient(135deg, #f7971e, #ffd200); }
 
 .step-box:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
 }
 
-/* About Section */
+/* ===== About Section ===== */
 .about-section {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    margin: 2rem auto;
     max-width: 900px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 1rem;
 }
 
-.about-section h2 {
-    margin-bottom: 1rem;
-}
-
-/* Footer */
+/* ===== Footer ===== */
 footer {
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.3);
-    margin-top: 2rem;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    font-size: 0.9rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+    header h1 { font-size: 1.5rem; }
+    nav a { font-size: 0.95rem; }
+}
+
+@media (max-width: 768px) {
+    header h1 { font-size: 1.4rem; }
+    nav a { font-size: 0.9rem; }
+    .step-box { padding: 20px; flex: 1 1 45%; } /* 2 per row */
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-wrap: wrap;
+    }
+    header h1 { font-size: 1.3rem; margin-bottom: 10px; }
+    nav {
+        width: 100%;
+        justify-content: flex-end; /* nav stays on right */
+    }
+    nav a { font-size: 0.85rem; }
+    section { padding: 40px 10px; }
+    .step-box { flex: 1 1 100%; padding: 15px; } /* 1 per row */
+    .about-section { padding: 30px 10px; font-size: 0.95rem; }
 }
