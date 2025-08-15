@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use / Get Started</title>
+    <link rel="stylesheet" href="{% static 'app1/css/style2.css' %}">
+
+</head>
+<body>
+<header>
+    <h1>🏠 How to Use</h1>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'howtouse' %}">How to Use</a>
+        <a href="{% url 'predict' %}">Predict</a>
+    </nav>
+</header>
+
+<section>
+    <h2>Steps to Get Started</h2>
+    <div class="steps-container">
+        <div class="step-box box1">
+            <h3>📝 Step 1</h3>
+            <p>Go to the <strong>Predict</strong> page.</p>
+        </div>
+        <div class="step-box box2">
+            <h3>🏠 Step 2</h3>
+            <p>Fill in details: income, bedrooms, bathrooms, population, location, and age.</p>
+        </div>
+        <div class="step-box box3">
+            <h3>📌 Step 3</h3>
+            <p>Click the <strong>Predict</strong> button to process your inputs.</p>
+        </div>
+        <div class="step-box box4">
+            <h3>💰 Step 4</h3>
+            <p>View the estimated house price instantly.</p>
+        </div>
+        <div class="step-box box5">
+            <h3>📊 Step 5</h3>
+            <p>Analyze the results and compare with market prices.</p>
+        </div>
+        <div class="step-box box6">
+            <h3>📂 Step 6</h3>
+            <p>Save or screenshot your prediction for future reference.</p>
+        </div>
+    </div>
+</section>
+
+<section class="about-section">
+    <h2>About This App</h2>
+    <p>This House Price Prediction App uses advanced Machine Learning models to estimate property prices based on multiple factors such as income levels, location, population, and house age. It's fast, accurate, and user-friendly.</p>
+</section>
+
+<footer>
+    <p>© 2025 House Price Prediction App</p>
+</footer>
+</body>
+</html>

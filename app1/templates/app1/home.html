@@ -3,17 +3,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HOME</title>
-    <link rel="stylesheet" href="{% static 'app1/css/style_1.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction - Home</title>
+    <link rel="stylesheet" href="{% static 'app1/css/style1.css' %}">
 </head>
 <body>
-     <h2>Welcome to</h2>
-     <h1>House Price Prediction</h1>
-     <form action="predict">
-         <button>START</button>
-     </form>
+<header>
+    <h1>🏠 House Price Prediction App</h1>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'howtouse' %}">How to Use</a>
+        <a href="{% url 'predict' %}">Predict</a>
+    </nav>
+</header>
 
-<img src ="{%static 'app1/image/img_1.png'%}" alt="aws">
+<!-- Info Section -->
+<section>
+    <div class="info-boxes">
+        <div class="info-box">
+            <h3>📈 Accurate Predictions</h3>
+            <p>Our AI model provides real-time house price predictions with high accuracy.</p>
+        </div>
+        <div class="info-box">
+            <h3>📊 Data-Driven Insights</h3>
+            <p>Trained on thousands of housing records to ensure reliability.</p>
+        </div>
+        <div class="info-box">
+            <h3>📍 Location-Based Analysis</h3>
+            <p>Considers your location for more precise results.</p>
+        </div>
+    </div>
+</section>
 
+<!-- About Section with Boxes -->
+<section>
+    <h2>About</h2>
+    <div class="features-boxes">
+        <div class="feature-box">
+            <h3>💡 Smart AI Technology</h3>
+            <p>This app predicts the price of your house based on advanced machine learning algorithms.</p>
+        </div>
+        <div class="feature-box">
+            <h3>🏡 Key Property Factors</h3>
+            <p>Considers features like population, bedrooms, bathrooms, floors, and house age for accuracy.</p>
+        </div>
+        <div class="feature-box">
+            <h3>🌍 Location Awareness</h3>
+            <p>Integrates location-based data for market-accurate estimates.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section with Boxes -->
+<section>
+    <h2>Features</h2>
+    <div class="features-boxes">
+        <div class="feature-box">
+            <h3>⚡ Fast & Easy</h3>
+            <p>Simple and user-friendly interface for quick predictions.</p>
+        </div>
+        <div class="feature-box">
+            <h3>🎯 Accurate Predictions</h3>
+            <p>Powered by a trained ML model with high precision.</p>
+        </div>
+        <div class="feature-box">
+            <h3>📱 Fully Responsive</h3>
+            <p>Optimized for mobile, tablet, and desktop devices.</p>
+        </div>
+        <div class="feature-box">
+            <h3>✅ Input Validation</h3>
+            <p>Ensures data quality for better prediction results.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 House Price Prediction App</p>
+</footer>
 </body>
 </html>

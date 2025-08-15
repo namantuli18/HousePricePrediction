@@ -2,48 +2,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PREDICT</title>
-    <link rel="stylesheet" href="{% static 'app1/css/style_2.css' %}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Predict House Price</title>
+<link rel="stylesheet" href="{% static 'app1/css/style3.css' %}">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
-<body>
-     <div class="main">
-         <h1>Please enter the following values:</h1>
-         <form action="result" method="POST">
-             {% csrf_token %}
-             <div class="col-sm-1">
-                 <p> Avg.Area Income</p>
-                 <input type="text" name="n1">
-             </div>
-             <div class="col-sm-2">
-                 <p> Avg.Area House Age</p>
-                 <input type="text" name="n2">
-             </div>
-             <div class="col-sm-3">
-                 <p> Avg.Area Number of Rooms</p>
-                 <input type="text" name="n3">
-             </div>
-             <div class="col-sm-4">
-                 <p> Avg.Area Number of Bedrooms</p>
-                 <input type="text" name="n4">
-             </div>
-             <div class="col-sm-5">
-                 <p> Avg.Area Population</p>
-                 <input type="text" name="n5">
-             </div>
-             <div class="col-sm-6">
-                 <p> Location </p>
-                 <textarea name="n6" rows="3" cols ="25"></textarea>
-             </div>
-             <div class="row-1">
-                 <button>PREDICT</button>
-             </div>
-         </form>
+<body id="fullPage">
 
-         <div class="row-2">
-             <h2>The Predicted price is : ${{result}}</h2>
-         </div>
-     </div>
+<header>
+    <h1>🏠 Predict House Price</h1>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'howtouse' %}">How to Use</a>
+        <a href="{% url 'predict' %}">Predict</a>
+    </nav>
+</header>
+
+<section>
+<div class="form-box">
+    <form method="POST" id="PriceForm">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="button-group">
+            <button type="submit" class="btn-primary">Predict</button>
+            <button type="reset" class="btn-secondary" id="clearBtn">Clear</button>
+        </div>
+    </form>
+
+    <div class="success" id="priceResult">💰 Estimated Price: {{ price|default:"-" }}</div>
+    <div class="info" id="accuracyResult">📊 Model Accuracy: {{ accuracy_score|default:"-" }}%</div>
+
+    <div id="chartContainer"
+         data-values='{{ input_values|default:"[0,0,0,0,0]"|safe }}'
+         data-address='{{ posted_address|default:"" }}'>
+        <div class="chart-container">
+            <canvas id="valueChart"></canvas>
+        </div>
+        <div id="map" style="height:300px; border-radius:10px; margin-top:15px;"></div>
+        <img id="mapImage" style="display:none; width:100%; height:300px; border-radius:10px;">
+    </div>
+
+    <button id="exportPdf" class="btn-primary" style="margin-top:15px;">Export Full Page as PDF</button>
+</div>
+</section>
+
+<footer>
+<p>© 2025 House Price Prediction App</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="{% static 'app1/js/app.js' %}"></script>
+
 </body>
 </html>
