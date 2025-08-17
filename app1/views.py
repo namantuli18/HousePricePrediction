@@ -1,25 +1,26 @@
 from django.shortcuts import render
-from .forms import HousePriceForm
+from .forms import HousePriceForm, LOCATION_OPTIONS
+import joblib
+import numpy as np
+import pandas as pd
+
 
 def calculate_price(data):
-    import joblib
-    import numpy as np
-    import pandas as pd
 
-    # Load model and encoder
-    model = joblib.load("app1/model.sav")
-    encoder = joblib.load("app1/encoder.sav")  # OneHotEncoder trained on 'Address' with handle_unknown='ignore'
 
-    input_df = pd.DataFrame([data])
-    encoded_address = encoder.transform(input_df[['Address']]).toarray()
+    linear = joblib.load("app1/linear.sav")
+    encoder = joblib.load("app1/encoder.sav")
+    scaler = joblib.load("app1/scaler.sav")
 
-    # If needed, convert back to DataFrame and join with other features
-    encoded_df = pd.DataFrame(encoded_address, columns=encoder.get_feature_names_out(['Address']))
-    final_input = pd.concat([input_df.drop('Address', axis=1), encoded_df], axis=1)
-
-    predicted_price = model.predict(final_input)
-    return predicted_price[0].item()
-
+    data = pd.DataFrame([data])
+    encoded_location = encoder.transform(data[["Location"]]).toarray()
+    location_df = pd.DataFrame(encoded_location, columns=encoder.get_feature_names_out(["Location"]))
+    data = pd.concat([data.drop("Location", axis=1).reset_index(drop=True),
+                      location_df.reset_index(drop=True)], axis=1)
+    scaled = scaler.transform(data)
+    data = pd.DataFrame(scaled, columns=data.columns, index=data.index)
+    predicted_price = linear.predict(data)
+    return (predicted_price[0])
 
 def home(request):
     return render(request, 'app1/home.html')
@@ -30,26 +31,28 @@ def howtouse(request):
 def predict(request):
     form = HousePriceForm()
     price = None
-    input_values = [0, 0, 0, 0, 0]  # raw input values
-    posted_address = ''
+    input_values = [0, 0, 0, 0]  # raw input values
+    posted_location = ''
 
     if request.method == "POST":
         form = HousePriceForm(request.POST)
         if form.is_valid():
             price = calculate_price(form.cleaned_data)
-            income = float(request.POST.get('Income', 0))
-            house_age = float(request.POST.get('HouseAge', 0))
-            rooms = float(request.POST.get('Number_of_Rooms', 0))
-            bedrooms = float(request.POST.get('Number_of_Bedrooms', 0))
-            population = float(request.POST.get('AreaPopulation', 0))
-            posted_address = request.POST.get('Address', '')
+            Location = request.POST.get('Location', '')
+            BHK = float(request.POST.get('BHK', 0))
+            Sqft = float(request.POST.get('Sqft', 0))
+            Bathrooms = float(request.POST.get('Bath', 0))
+            Balcony = float(request.POST.get('Balcony', 0))
 
-            input_values = [house_age, rooms, bedrooms, income, population]
+            posted_location = Location
+
+            input_values = [BHK,Sqft,Bathrooms,Balcony]
 
     return render(request, 'app1/predict.html', {
         'form': form,
         'price': price,
         'input_values': input_values,
-        'posted_address': posted_address,
-        'accuracy_score': 91.798
+        'posted_location': posted_location,
+        'accuracy_score': 50,
+        'location_options': LOCATION_OPTIONS
     })

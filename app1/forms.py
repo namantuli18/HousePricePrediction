@@ -1,34 +1,34 @@
 from django import forms
 
+import pandas as pd
+
+# Load dataset
+df = pd.read_csv(r'C:\Users\vvans\Downloads\House_Price_Bangalore.csv')
+LOCATION_OPTIONS = sorted(df['Location'].dropna().unique())
+
 class HousePriceForm(forms.Form):
-
-    Income = forms.FloatField(label="Income", min_value=1,widget=forms.NumberInput(attrs={
-            'placeholder': 'Enter Income',
+    Location= forms.CharField(label="Location",widget=forms.TextInput(attrs={
+            'list': 'locationOptions',
+            'placeholder': 'Enter location',
             'class': 'input-field',
-            'min': '1'
         }))
-    HouseAge = forms.FloatField(label="House Age", min_value=1, widget=forms.NumberInput(attrs={
-        'placeholder': 'Enter House Age',
+    BHK = forms.FloatField(label="BHK", widget=forms.NumberInput(attrs={
+        'placeholder': 'Enter BHK',
         'class': 'input-field',
-        'min': '1'
-    }))
-    Number_of_Rooms = forms.FloatField(label="rooms", min_value=1, widget=forms.NumberInput(attrs={
-        'placeholder': 'Enter number of rooms',
-        'class': 'input-field',
-        'min': '1'
-    }))
-    Number_of_Bedrooms = forms.FloatField(label="Bedrooms", min_value=1, widget=forms.NumberInput(attrs={
-        'placeholder': 'Enter number of bedrooms',
-        'class': 'input-field',
-        'min': '1'
-    }))
-    AreaPopulation = forms.FloatField(label="population", min_value=1, widget=forms.NumberInput(attrs={
-        'placeholder': 'Enter population',
-        'class': 'input-field',
-        'min': '1'
-    }))
 
-    Address = forms.CharField(label="Location", max_length=100, widget=forms.TextInput(attrs={
-        'placeholder': 'Enter address',
-        'class': 'input-field'
+    }))
+    Sqft = forms.FloatField(label="Sqft", widget=forms.NumberInput(attrs={
+        'placeholder': 'Enter sqft',
+        'class': 'input-field',
+
+    }))
+    Bath = forms.FloatField(label="Bathrooms",  widget=forms.NumberInput(attrs={
+        'placeholder': 'Enter number of bathrooms',
+        'class': 'input-field',
+
+    }))
+    Balcony = forms.FloatField(label="Balcony", widget=forms.NumberInput(attrs={
+        'placeholder': 'Enter number of balcony',
+        'class': 'input-field',
+
     }))
