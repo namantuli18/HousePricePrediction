@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY','r!2wfx71w^3&_tsc@6)z06!prd!k=lrs31@z4o
 DEBUG =  os.environ.get('DEBUG','False')=='True'
 
 ALLOWED_HOSTS = [
-    os.environ.get("RENDER_EXTERNAL_HOSTNAME", "HousePricePrediction-910.onrender.com"),
+    os.environ.get("RENDER_EXTERNAL_HOSTNAME", "HousePricePrediction-920.onrender.com"),
     "localhost",
     "127.0.0.1"
 ]
