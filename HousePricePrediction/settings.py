@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY','r!2wfx71w^3&_tsc@6)z06!prd!k=lrs31@z4o
 DEBUG =  os.environ.get('DEBUG','False')=='True'
 
 ALLOWED_HOSTS = [
-    os.environ.get("RENDER_EXTERNAL_HOSTNAME", "HousePricePrediction-960.onrender.com"),
+    os.environ.get("RENDER_EXTERNAL_HOSTNAME", "HousePricePrediction-800.onrender.com"),
     "localhost",
     "127.0.0.1"
 ]
@@ -62,7 +62,7 @@ ROOT_URLCONF = 'HousePricePrediction.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
